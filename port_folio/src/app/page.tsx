@@ -4,6 +4,7 @@ import { useState } from "react";
 import Hero from "@/component/MainPage/Hero";
 import Navbar from "@/component/Navbar";
 import Loader from "@/component/Loader";
+import Card from "@/component/About/Card";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +19,7 @@ export default function Home() {
 
       {/* Loader khatam hone ke baad hi Hero component render hoga aur animation chalegi */}
       {!isLoading && <Hero />}
+      <Card/>
     </main>
   );
 }

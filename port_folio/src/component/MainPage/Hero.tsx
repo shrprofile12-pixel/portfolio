@@ -9,6 +9,7 @@ import { FaGithub, FaLinkedinIn, FaArrowRight } from "react-icons/fa"
 import { LuMouse } from "react-icons/lu"
 import { HiOutlineMailOpen } from "react-icons/hi"
 import Image from 'next/image'
+import ParticlePhoto from '../ParticlePhoto'
 
 const Logo = localFont({
   src: '../../../Fonts/ThickoDEMO-Regular.ttf' 
@@ -122,7 +123,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className='w-full min-h-[calc(100vh-80px)] flex flex-col lg:flex-row justify-between items-center px-6 md:px-16 py-10 gap-12 relative z-10 overflow-hidden'>
+    <section className='w-full min-h-[calc(100vh-80px)] flex flex-col lg:flex-row justify-between items-center px-6 md:px-16  gap-12 relative z-10 overflow-hidden'>
 
       {/* Glowing Liquid Cursor Canvas Background */}
       <canvas 
@@ -185,17 +186,9 @@ const Hero = () => {
       >
         <div className="absolute w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none -z-10" />
         
-        <div className="flex w-full max-w-[360px] aspect-[3/4] rounded-2xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group relative backdrop-blur-sm">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-40 group-hover:opacity-10 transition-opacity duration-500" />
-          
-          {/* <Image 
-            alt='Sahar Fatima - Full Stack Developer'
-            fill
-            src={heroImage}
-            priority
-            className='object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out'
-          /> */}
-        </div>
+      
+
+        <ParticlePhoto/>
       </div>
 
       {/* Modern Sleek Social Sidebar */}

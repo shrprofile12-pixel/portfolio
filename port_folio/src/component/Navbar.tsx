@@ -90,7 +90,7 @@ const Navbar = () => {
         <div ref={cursor} className='w-8 h-8 fixed top-0 left-0 bg-white opacity-60 mix-blend-difference z-50 pointer-events-none rounded-full -translate-x-1/2 -translate-y-1/2 scale-0'></div>
         
         <div className="flex justify-between items-center p-4 text-white relative z-20">
-          <h1 className={`${Logo.className} text-4xl ml-8 hover-target cursor-pointer inline-block relative group`}>
+          <h1 className={`${Logo.className} text-4xl ml-8 hover-target text-red-700 hover:text-white cursor-pointer inline-block relative group`}>
             SAHAR FATIMA
             <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-white rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
           </h1>

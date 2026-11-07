@@ -1,32 +1,38 @@
-"use client"
+"use client";
 
-import React, { RefObject } from 'react'
-import Link from 'next/link'
-import { FaArrowRight } from "react-icons/fa"
-import ParticlePhoto from '../ParticlePhoto'
+import React, { RefObject } from "react";
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
+import ParticlePhoto from "../ParticlePhoto";
 
 interface HeroImageProps {
-  imageRef: RefObject<HTMLDivElement | null>
+  imageRef: RefObject<HTMLDivElement | null>;
 }
 
 export const HeroImage: React.FC<HeroImageProps> = ({ imageRef }) => {
   return (
-    <div 
-      ref={imageRef} 
-      className="w-full sm:w-2/3 top-[-70px] md:w-1/2 lg:w-[35%] lg:mr-12 flex justify-center lg:justify-end items-center relative z-10"
+    <div
+      ref={imageRef}
+      className="relative z-20 flex w-full items-center justify-center lg:w-full lg:justify-center"
     >
-      <div className="absolute w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none -z-10" />
-      
-      <ParticlePhoto />
+      {/* Soft glow behind image */}
+      <div className="pointer-events-none absolute -z-10 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
 
-      <div className="absolute top-[200px] bottom-[-200px] right-5 sm:right-6 lg:-right-24 z-20 flex items-center justify-center cursor-pointer group">
-        <Link 
-          href="#projects" 
-          className="z-20 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black shadow-lg"
+      {/* Particle Girl */}
+      <div className="relative z-10">
+        <ParticlePhoto />
+      </div>
+
+      {/* Explore Arrow */}
+      <div className="group absolute right-0 top-[70%] z-30 flex -translate-y-1/2 items-center justify-center lg:-right-12">
+        <Link
+          href="#projects"
+          aria-label="Explore projects"
+          className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-white hover:text-black"
         >
-          <FaArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+          <FaArrowRight className="h-5 w-5 -rotate-45 transition-transform duration-300 group-hover:rotate-0" />
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};

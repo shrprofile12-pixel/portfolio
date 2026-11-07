@@ -4,11 +4,9 @@ import React, { useEffect, useRef } from 'react'
 import localFont from 'next/font/local'
 import Link from 'next/link'
 import gsap from 'gsap'
-import heroImage from "../../../public/selfHero.png"
 import { FaGithub, FaLinkedinIn, FaArrowRight } from "react-icons/fa"
 import { LuMouse } from "react-icons/lu"
 import { HiOutlineMailOpen } from "react-icons/hi"
-import Image from 'next/image'
 import ParticlePhoto from '../ParticlePhoto'
 
 const Logo = localFont({
@@ -66,7 +64,7 @@ const Hero = () => {
       delay: 1
     })
 
-    // Glowing Liquid Cursor Canvas Logic
+    // Canvas Background
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
@@ -123,18 +121,16 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className='w-full min-h-[calc(100vh-80px)] flex flex-col lg:flex-row justify-between items-center px-6 md:px-16  gap-12 relative z-10 overflow-hidden'>
+    <section className='w-full min-h-[calc(100vh-80px)] flex flex-col lg:flex-row justify-between items-center px-6 md:px-16 gap-12 relative z-10 overflow-hidden'>
 
-      {/* Glowing Liquid Cursor Canvas Background */}
+      {/* Canvas Background */}
       <canvas 
         ref={canvasRef} 
         className='absolute inset-0 w-full h-full pointer-events-none z-0'
       />
 
-      {/* Left Side: Main Heading, Subtext, Bio, and Buttons */}
+      {/* Left Content */}
       <div className="w-full lg:w-7/12 flex flex-col justify-center items-start text-left relative z-10">
-        
-        {/* Heading */}
         <h1 
           ref={headingRef}
           className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-wide uppercase leading-none ${Logo.className}`}
@@ -142,7 +138,6 @@ const Hero = () => {
           Full-Stack Developer
         </h1>
 
-        {/* Subtext */}
         <p 
           ref={subTextRef}
           className="text-gray-400 text-lg md:text-2xl mt-4 tracking-wide font-light"
@@ -150,7 +145,6 @@ const Hero = () => {
           crafting web systems & motion.
         </p>
 
-        {/* Bio */}
         <p 
           ref={bioRef}
           className="text-gray-300 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed mt-4 mb-8"
@@ -158,12 +152,10 @@ const Hero = () => {
           Engineering high-performance web applications where robust backend architecture meets seamless human experience. I transform complex business logic into clean, scalable, and beautifully animated digital products.
         </p>
 
-        {/* Buttons */}
-        <div ref={buttonsRef} className="flex flex-wrap gap-4 w-full">
-
+        <div ref={buttonsRef} className="flex flex-wrap items-center gap-4 w-full">
           <Link 
             href="#projects" 
-            className=" sm:w-auto lg:w-1/3 flex justify-center items-center gap-3 px-7 py-3.5 rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-300 text-sm sm:text-base shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105"
+            className="sm:w-auto lg:w-1/3 flex justify-center items-center gap-3 px-7 py-3.5 rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all duration-300 text-sm sm:text-base shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105"
           >
             Explore Projects
             <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -171,7 +163,7 @@ const Hero = () => {
           
           <Link 
             href="#contact" 
-            className="flex lg:w-1/2  sm:w-auto justify-center items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white font-medium hover:bg-white/10 hover:border-white/40 transition-all duration-300 text-sm sm:text-base hover:scale-105"
+            className="flex lg:w-1/2 sm:w-auto justify-center items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white font-medium hover:bg-white/10 hover:border-white/40 transition-all duration-300 text-sm sm:text-base hover:scale-105"
           >
             <LuMouse className="w-4 h-4 animate-pulse text-gray-300" /> 
             Get in Touch
@@ -179,19 +171,27 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Right Side: Image with Floating Animation & Glow Backdrop */}
+      {/* Right Image Container */}
       <div 
         ref={imageRef} 
         className="w-full sm:w-2/3 md:w-1/2 lg:w-[35%] lg:mr-12 flex justify-center lg:justify-end items-center relative z-10"
       >
         <div className="absolute w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none -z-10" />
         
-      
+        <ParticlePhoto />
 
-        <ParticlePhoto/>
+        {/* 🌟 Circular Text removed, only the exact Arrow Button remains at the exact position */}
+        <div className="absolute top-[40px] bottom-[-200px] right-5 sm:right-6 lg:-right-24 z-20 flex items-center justify-center cursor-pointer group">
+          <Link 
+            href="#projects" 
+            className="z-20 w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black shadow-lg"
+          >
+            <FaArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+          </Link>
+        </div>
       </div>
 
-      {/* Modern Sleek Social Sidebar */}
+      {/* Sidebar */}
       <div className="top-1/3 right-0 w-12 absolute bg-white/10 backdrop-blur-md border-y border-l border-white/20 py-5 z-20 text-white rounded-l-2xl shadow-2xl hidden md:flex flex-col justify-center items-center gap-6">
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:scale-125 hover:text-white text-gray-300 transition-all duration-300">
           <FaGithub className='w-5 h-5' />

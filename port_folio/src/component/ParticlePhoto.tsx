@@ -79,9 +79,8 @@ export default function ParticlePhoto() {
 
       // STEP 2: Animation function
       const animate = (time: number) => {
-        // Har frame purana canvas clear karo
-        ctx.fillStyle = "#000";
-        ctx.fillRect(0, 0, width, height);
+        // Background ko black fill karne ki bajaye transparent clear karo
+        ctx.clearRect(0, 0, width, height);
 
         // Har particle ko redraw karo
         particles.forEach((particle) => {

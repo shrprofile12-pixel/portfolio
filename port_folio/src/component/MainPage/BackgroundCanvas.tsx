@@ -72,17 +72,17 @@ export const BackgroundCanvas = () => {
 
         const currentAlpha = this.alpha * pulse;
 
-        ctx.save();
+        ctx!.save();
 
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx!.beginPath();
+        ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 
-        ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha})`;
-        ctx.shadowBlur = this.size > 1.5 ? 12 : 6;
-        ctx.shadowColor = `rgba(255, 255, 255, ${currentAlpha})`;
+        ctx!.fillStyle = `rgba(255, 255, 255, ${currentAlpha})`;
+        ctx!.shadowBlur = this.size > 1.5 ? 12 : 6;
+        ctx!.shadowColor = `rgba(255, 255, 255, ${currentAlpha})`;
 
-        ctx.fill();
-        ctx.restore();
+        ctx!.fill();
+        ctx!.restore();
       }
     }
 

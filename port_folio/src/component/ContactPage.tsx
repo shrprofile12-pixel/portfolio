@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Code, MessageSquare, Send } from "lucide-react"; // Github ki jagah Code use kar liya hai
+import React, { useState } from "react";
+import Link from "next/link";
+import { Mail, Code, MessageSquare, Send } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
   };
@@ -29,15 +30,15 @@ export default function ContactPage() {
           {/* Left Side: Direct Contact Info */}
           <div className="bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm p-8 rounded-2xl flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
+              <h3 className="text-2xl font-semibold mb-6">Let&apos;s Connect</h3>
               <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-                Aap mujhse ne diye gaye platform par bhi rabta kar sakti hain. Main koshish karungi ke jald se jald reply karoon.
+                Aap mujhse niche diye gaye platform par bhi rabta kar sakti hain. Main koshish karungi ke jald se jald reply karoon.
               </p>
 
               {/* Links */}
               <div className="space-y-4">
                 {/* Gmail */}
-                <a 
+                <Link 
                   href="mailto:your-email@gmail.com" 
                   className="flex items-center gap-4 p-3 rounded-xl bg-zinc-800/40 hover:bg-zinc-800 transition-colors border border-zinc-700/50"
                 >
@@ -48,10 +49,10 @@ export default function ContactPage() {
                     <p className="text-xs text-gray-400">Email Me</p>
                     <p className="text-sm font-medium">sahar.fatima@gmail.com</p>
                   </div>
-                </a>
+                </Link>
 
                 {/* GitHub (Using Code icon) */}
-                <a 
+                <Link 
                   href="https://github.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -64,10 +65,10 @@ export default function ContactPage() {
                     <p className="text-xs text-gray-400">GitHub</p>
                     <p className="text-sm font-medium">github.com/username</p>
                   </div>
-                </a>
+                </Link>
 
                 {/* Discord */}
-                <a 
+                <Link 
                   href="https://discord.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -80,7 +81,7 @@ export default function ContactPage() {
                     <p className="text-xs text-gray-400">Discord</p>
                     <p className="text-sm font-medium">Sahar#0000</p>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
 

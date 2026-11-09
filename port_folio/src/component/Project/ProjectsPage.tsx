@@ -1,8 +1,20 @@
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+
+// Define the Project type according to your Prisma schema
+interface Project {
+  id: string | number;
+  title: string;
+  description: string;
+  imageUrl?: string | null;
+  projectUrl?: string | null;
+  githubUrl?: string | null;
+  createdAt?: Date;
+}
 
 export default async function ProjectsSection() {
   // Database se projects fetch karna (Server-side)
-  const projects = await prisma.project.findMany({
+  const projects: Project[] = await prisma.project.findMany({
     orderBy: { createdAt: "desc" },
   });
 
@@ -11,7 +23,7 @@ export default async function ProjectsSection() {
       <h2 className="text-3xl font-bold mb-8 text-white">My Projects</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
+        {projects.map((project: Project) => (
           <div 
             key={project.id} 
             className="border border-zinc-800 rounded-xl overflow-hidden shadow-lg bg-zinc-900/80 backdrop-blur-sm flex flex-col justify-between transition-all duration-300 hover:border-zinc-700"
@@ -35,24 +47,24 @@ export default async function ProjectsSection() {
               {/* Links (Live Demo / GitHub / Project URL) */}
               <div className="flex items-center gap-4 pt-4 border-t border-zinc-800 mt-auto">
                 {project.projectUrl && (
-                  <a 
+                  <Link 
                     href={project.projectUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-blue-400 hover:underline"
                   >
                     Live Demo →
-                  </a>
+                  </Link>
                 )}
                 {project.githubUrl && (
-                  <a 
+                  <Link 
                     href={project.githubUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-gray-300 hover:text-white hover:underline"
                   >
                     GitHub Code
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>

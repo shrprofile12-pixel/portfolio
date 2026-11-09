@@ -8,7 +8,22 @@ import Loader from "../component/Loader";
 import Card from "../component/About/Card";
 import ContactPage from "./ContactPage";
 
-const MainPage = ({ projects }) => {
+// Define the Project type based on your Prisma schema
+export interface Project {
+  id: string | number;
+  title: string;
+  description: string;
+  imageUrl?: string | null;
+  projectUrl?: string | null;
+  githubUrl?: string | null;
+  createdAt?: string | Date;
+}
+
+interface MainPageProps {
+  projects: Project[];
+}
+
+const MainPage = ({ projects }: MainPageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -44,7 +59,7 @@ const MainPage = ({ projects }) => {
             <h2 className="text-3xl font-bold mb-8 text-white">My Projects</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects && projects.map((project) => (
+              {projects && projects.map((project: Project) => (
                 <div 
                   key={project.id} 
                   className="border border-zinc-800 rounded-xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm text-white flex flex-col justify-between shadow-xl transition-all duration-300 hover:border-zinc-700"

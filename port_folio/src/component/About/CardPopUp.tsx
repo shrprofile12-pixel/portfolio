@@ -17,17 +17,21 @@ interface CardPopUpProps {
 const CardPopUp: React.FC<CardPopUpProps> = ({ children }) => {
   return (
     <Dialog>
-      {/* asChild clones the trigger props onto the direct child element without adding an extra button wrapper */}
-      <DialogTrigger asChild>
+      {/* Removed asChild to prevent TypeScript mismatch with your UI library */}
+      <DialogTrigger>
         {children || (
-          <span className="group inline-flex cursor-pointer items-center gap-3 border-b border-blue-400 pb-2 text-sm font-medium text-white transition hover:text-blue-400">
+          <button
+            type="button"
+            className="group inline-flex cursor-pointer items-center gap-3 border-b border-blue-400 bg-transparent pb-2 text-sm font-medium text-white transition hover:text-blue-400"
+          >
             Explore My Projects
             <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
-          </span>
+          </button>
         )}
       </DialogTrigger>
+
       <DialogContent className="border-zinc-800 bg-zinc-950 text-white sm:max-w-xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold text-white">

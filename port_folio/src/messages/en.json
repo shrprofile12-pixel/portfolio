@@ -1,0 +1,17 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "language": "English"
+  },
+  "Hero": {
+    "titleLine1": "Full-Stack",
+    "titleLine2": "Developer",
+    "subText": "crafting web systems & motion.",
+    "bio": "Engineering high-performance web applications where robust backend architecture meets seamless human experience. I transform complex business logic into clean, scalable, and beautifully animated digital products.",
+    "exploreProjects": "Explore Projects",
+    "getInTouch": "Get in Touch"
+  }
+}

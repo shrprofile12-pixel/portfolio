@@ -3,6 +3,7 @@
 import React, { RefObject } from "react";
 import Link from "next/link";
 import localFont from "next/font/local";
+import { useTranslations } from "next-intl";
 import { FaArrowRight } from "react-icons/fa";
 import { LuMouse } from "react-icons/lu";
 
@@ -23,6 +24,8 @@ export const HeroContent: React.FC<HeroContentProps> = ({
   bioRef,
   buttonsRef,
 }) => {
+  const t = useTranslations("Hero");
+
   return (
     <div className="relative z-10 flex min-h-[calc(100vh-80px)] w-full flex-col justify-center py-12 text-left">
       
@@ -30,26 +33,23 @@ export const HeroContent: React.FC<HeroContentProps> = ({
         ref={headingRef}
         className={`text-5xl uppercase leading-none tracking-wide text-white sm:text-6xl md:text-7xl lg:text-8xl ${Logo.className}`}
       >
-        Full-Stack
+        {t("titleLine1")}
         <br />
-        Developer
+        {t("titleLine2")}
       </h1>
 
       <p
         ref={subTextRef}
         className="mt-6 text-lg font-light tracking-wide text-gray-400 md:text-2xl"
       >
-        crafting web systems & motion.
+        {t("subText")}
       </p>
 
       <p
         ref={bioRef}
         className="mt-4 mb-8 max-w-xl text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg"
       >
-        Engineering high-performance web applications where robust backend
-        architecture meets seamless human experience. I transform complex
-        business logic into clean, scalable, and beautifully animated digital
-        products.
+        {t("bio")}
       </p>
 
       <div
@@ -60,7 +60,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({
           href="#projects"
           className="flex items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition-all duration-300 hover:scale-105 sm:text-base"
         >
-          Explore Projects
+          {t("exploreProjects")}
           <FaArrowRight className="h-4 w-4" />
         </Link>
 
@@ -69,7 +69,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({
           className="flex items-center justify-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-300 hover:scale-105 sm:text-base"
         >
           <LuMouse className="h-4 w-4 animate-pulse text-gray-300" />
-          Get in Touch
+          {t("getInTouch")}
         </Link>
       </div>
     </div>

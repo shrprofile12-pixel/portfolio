@@ -1,0 +1,28 @@
+{
+  "Navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact",
+    "language": "Français"
+  },
+  "Hero": {
+    "titleLine1": "Full-Stack",
+    "titleLine2": "Developer",
+    "subText": "conception de systèmes web & motion.",
+    "bio": "Ingénierie d'applications web haute performance où l'architecture backend robuste rencontre une expérience utilisateur fluide. Je transforme des logiques métier complexes en produits numériques propres, évolutifs et magnifiquement animés.",
+    "exploreProjects": "Explorer les projets",
+    "getInTouch": "Me contacter"
+  },
+  "Projects": {
+    "title": "Projets en vedette",
+    "viewProject": "Voir le projet",
+    "github": "Code Source",
+    "details": "Détails"
+  },
+  "CardPopUp": {
+    "close": "Fermer",
+    "techStack": "Technologies",
+    "liveDemo": "Démo en direct"
+  }
+}

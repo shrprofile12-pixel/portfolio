@@ -20,13 +20,13 @@ async function main() {
         featured: true,
       },
       {
-        title: "E-Commerce Dashboard",
-        slug: "e-commerce-dashboard",
+        title: "Cardia AI",
+        slug: "cardia-ai",
         description: "Modern analytics dashboard built with TypeScript, Neon PostgreSQL, and Prisma.",
-        imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000",
-        githubUrl: "https://github.com",
+        imageUrl: "https://github.com/shrprofile12-pixel/AgentHospital/blob/main/screencapture-faunnaagentia-vercel-app-2026-11-19-14_37_27.png",
+        githubUrl: "https://faunnaagentia.vercel.app/",
         year: 2025,
-        featured: false,
+        featured: true,
       },
     ],
   });

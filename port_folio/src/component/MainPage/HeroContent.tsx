@@ -1,11 +1,12 @@
 "use client";
 
-import React, { RefObject } from "react";
+import React, { RefObject, useState } from "react";
 import Link from "next/link";
 import localFont from "next/font/local";
 import { useTranslations } from "next-intl";
 import { FaArrowRight } from "react-icons/fa";
 import { LuMouse } from "react-icons/lu";
+import Dialoge from "@/component/Dialoge"; // Adjust path as needed
 
 const Logo = localFont({
   src: "../../../Fonts/ThickoDEMO-Regular.ttf",
@@ -25,6 +26,9 @@ export const HeroContent: React.FC<HeroContentProps> = ({
   buttonsRef,
 }) => {
   const t = useTranslations("Hero");
+  
+  // State to control the dialog visibility
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <div className="relative z-10 flex min-h-[calc(100vh-80px)] w-full flex-col justify-center py-12 text-left">
@@ -64,14 +68,18 @@ export const HeroContent: React.FC<HeroContentProps> = ({
           <FaArrowRight className="h-4 w-4" />
         </Link>
 
-        <Link
-          href="#contact"
-          className="flex items-center justify-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-300 hover:scale-105 sm:text-base"
+        {/* Button triggers state instead of using asChild */}
+        <button
+          onClick={() => setIsDialogOpen(true)}
+          className="flex items-center justify-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-300 hover:scale-105 sm:text-base cursor-pointer"
         >
           <LuMouse className="h-4 w-4 animate-pulse text-gray-300" />
           {t("getInTouch")}
-        </Link>
+        </button>
       </div>
+
+      {/* Render the dialog component with state props */}
+      <Dialoge open={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </div>
   );
 };

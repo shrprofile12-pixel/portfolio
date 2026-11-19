@@ -3,15 +3,19 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
+  // 1. Purana data delete karein taake duplicate slug ka error na aaye
+  await prisma.project.deleteMany();
+
+  // 2. Naya data insert karein
   await prisma.project.createMany({
     data: [
       {
-        title: "AI Chat Application",
-        slug: "ai-chat-application",
+        title: "CHICOW Ecommerce Website",
+        slug: "chicow-ecommerce-website",
         description: "A full-stack real-time chat application powered by Next.js and Tailwind CSS.",
-        imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000",
-        projectUrl: "https://example.com",
-        githubUrl: "https://github.com",
+        imageUrl: "https://github.com/shrprofile12-pixel/Ecommerce-Nextjs/blob/main/LandingPage.png?raw=true",
+        projectUrl: "https://chicow.vercel.app/",
+        githubUrl: "https://github.com/shrprofile12-pixel/Ecommerce-Nextjs/tree/main/ecom",
         year: 2026,
         featured: true,
       },

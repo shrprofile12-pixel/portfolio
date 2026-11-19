@@ -3,14 +3,34 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Mail, Code, MessageSquare, Send } from "lucide-react";
+import { submitContactMessage } from "@/lib/contactaction"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsPending(true);
+    setErrorMsg("");
+
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("message", formData.message);
+
+    const result = await submitContactMessage(data);
+
+    setIsPending(false);
+
+    if (result.success) {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      setErrorMsg(result.error || "Something went wrong!");
+    }
   };
 
   return (
@@ -27,7 +47,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          {/* Left Side: Direct Contact Info */}
+          {/* Left Side: Direct Contact Info (Gmail, GitHub, Discord) */}
           <div className="bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm p-8 rounded-2xl flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-semibold mb-6">Let&apos;s Connect</h3>
@@ -39,7 +59,7 @@ export default function ContactPage() {
               <div className="space-y-4">
                 {/* Gmail */}
                 <Link 
-                  href="mailto:your-email@gmail.com" 
+                  href="mailto:sahar.fatima@gmail.com" 
                   className="flex items-center gap-4 p-3 rounded-xl bg-zinc-800/40 hover:bg-zinc-800 transition-colors border border-zinc-700/50"
                 >
                   <div className="p-2 bg-blue-500/10 text-blue-400 rounded-lg">
@@ -47,13 +67,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400">Email Me</p>
-                    <p className="text-sm font-medium">sahar.fatima@gmail.com</p>
+                    <p className="text-sm font-medium">shr12@gmail.com</p>
                   </div>
                 </Link>
 
-                {/* GitHub (Using Code icon) */}
+                {/* GitHub */}
                 <Link 
-                  href="https://github.com" 
+                  href="https://github.com/shrprofile12-pixel" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-3 rounded-xl bg-zinc-800/40 hover:bg-zinc-800 transition-colors border border-zinc-700/50"
@@ -90,7 +110,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right Side: Contact Form */}
+          {/* Right Side: Contact Form (Connected to DB) */}
           <div className="bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm p-8 rounded-2xl">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
 
@@ -100,10 +120,22 @@ export default function ContactPage() {
                   ✓
                 </div>
                 <h4 className="text-lg font-semibold mb-2">Message Sent!</h4>
-                <p className="text-gray-400 text-sm">Shukriya! Aapka message mil gaya hai, main jald hi rabta karungi.</p>
+                <p className="text-gray-400 text-sm mb-4">Shukriya! Aapka message mil gaya hai, main jald hi rabta karungi.</p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="text-xs text-gray-400 underline hover:text-white"
+                >
+                  Send another message
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {errorMsg && (
+                  <p className="text-xs text-red-400 bg-red-500/10 border border-red-500/20 p-3 rounded-xl">
+                    {errorMsg}
+                  </p>
+                )}
+
                 <div>
                   <label className="block text-xs font-medium text-gray-400 mb-1">Your Name</label>
                   <input 
@@ -142,9 +174,10 @@ export default function ContactPage() {
 
                 <button 
                   type="submit"
-                  className="w-full bg-white text-black font-medium py-3 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 text-sm mt-2"
+                  disabled={isPending}
+                  className="w-full bg-white text-black font-medium py-3 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 text-sm mt-2 disabled:opacity-50"
                 >
-                  <Send size={16} /> Send Message
+                  {isPending ? "Sending..." : <><Send size={16} /> Send Message</>}
                 </button>
               </form>
             )}

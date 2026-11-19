@@ -4,7 +4,6 @@ import React from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -17,14 +16,13 @@ interface CardPopUpProps {
 const CardPopUp: React.FC<CardPopUpProps> = ({ children }) => {
   return (
     <Dialog>
-      {/* Removed asChild to prevent TypeScript mismatch with your UI library */}
       <DialogTrigger>
         {children || (
           <button
             type="button"
             className="group inline-flex cursor-pointer items-center gap-3 border-b border-blue-400 bg-transparent pb-2 text-sm font-medium text-white transition hover:text-blue-400"
           >
-            Explore My Projects
+            FULL ABOUT ME
             <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
@@ -35,26 +33,27 @@ const CardPopUp: React.FC<CardPopUpProps> = ({ children }) => {
       <DialogContent className="border-zinc-800 bg-zinc-950 text-white sm:max-w-xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold text-white">
-            Featured Projects
+            About Me
           </DialogTitle>
-          <DialogDescription className="text-zinc-400">
-            Here are some of the key projects and digital experiences I&apos;ve built recently.
-          </DialogDescription>
         </DialogHeader>
 
         {/* Modal Body / Project Showcase Content */}
         <div className="mt-4 space-y-4 text-sm text-zinc-300">
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 transition hover:border-zinc-700">
-            <h3 className="font-semibold text-blue-400">Project One</h3>
-            <p className="mt-1 text-xs text-zinc-400">
-              A full-stack modern web application built with Next.js, Tailwind CSS, and TypeScript.
-            </p>
-          </div>
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 transition hover:border-zinc-700">
-            <h3 className="font-semibold text-blue-400">Project Two</h3>
-            <p className="mt-1 text-xs text-zinc-400">
-              Interactive web experience focusing on performant UI/UX and smooth animations.
-            </p>
+            <div className="mt-1 space-y-4 text-zinc-300 leading-relaxed">
+              <p>
+                I&apos;m <strong className="text-white">Sahar Fatima</strong>, a passionate Full-Stack Developer and Computer Science student who enjoys turning ideas into modern, functional, and user-friendly digital experiences.
+              </p>
+              <p>
+                I work with technologies like <strong className="text-white">Next.js, TypeScript, PostgreSQL, and Prisma</strong> to build scalable web applications with clean interfaces and thoughtful user experiences. I&apos;m constantly learning, exploring new technologies, and improving my skills through hands-on projects.
+              </p>
+              <p>
+                I believe great development is about more than writing code—it&apos;s about solving problems, creating meaningful experiences, and building products that people enjoy using.
+              </p>
+              <p className="font-medium text-zinc-200">
+                Currently, I&apos;m focused on growing as a developer, building ambitious projects, and creating digital experiences that combine technology, creativity, and purpose.
+              </p>
+            </div>
           </div>
         </div>
       </DialogContent>

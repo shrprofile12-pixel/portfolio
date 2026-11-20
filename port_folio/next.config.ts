@@ -4,6 +4,20 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactCompiler: true,
   turbopack: {},
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/shrprofile12-pixel/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        pathname: '/shrprofile12-pixel/**',
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin(

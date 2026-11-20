@@ -1,13 +1,13 @@
 "use server";
 
-import { db } from "@/lib/db"; // Aapka prisma client instance
+import { prisma } from "@/lib/prisma"; // Aapka prisma client instance
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 // 1. Get All Projects
 export async function getProjects() {
   try {
-    return await db.project.findMany({
+    return await prisma.project.findMany({
       orderBy: { createdAt: "desc" },
     });
   } catch (error) {
@@ -19,7 +19,7 @@ export async function getProjects() {
 // 2. Get Single Project by ID (for Edit Page)
 export async function getProjectById(id: string) {
   try {
-    return await db.project.findUnique({
+    return await prisma.project.findUnique({
       where: { id },
     });
   } catch (error) {
@@ -41,7 +41,7 @@ export async function addProject(formData: FormData) {
   const featured = formData.get("featured") === "on";
 
   try {
-    await db.project.create({
+    await prisma.project.create({
       data: {
         title,
         slug,
@@ -73,7 +73,7 @@ export async function updateProject(id: string, formData: FormData) {
   const featured = formData.get("featured") === "on";
 
   try {
-    await db.project.update({
+    await prisma.project.update({
       where: { id },
       data: {
         title,
@@ -97,7 +97,7 @@ export async function updateProject(id: string, formData: FormData) {
 // 5. Delete Project
 export async function deleteProject(id: string) {
   try {
-    await db.project.delete({
+    await prisma.project.delete({
       where: { id },
     });
     revalidatePath("/admin");

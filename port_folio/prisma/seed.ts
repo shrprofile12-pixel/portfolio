@@ -19,15 +19,15 @@ async function main() {
         year: 2026,
         featured: true,
       },
-      {
-        title: "Cardia AI",
-        slug: "cardia-ai",
-        description: "Modern analytics dashboard built with TypeScript, Neon PostgreSQL, and Prisma.",
-        imageUrl: "https://github.com/shrprofile12-pixel/AgentHospital/blob/main/screencapture-faunnaagentia-vercel-app-2026-11-19-14_37_27.png",
-        githubUrl: "https://faunnaagentia.vercel.app/",
-        year: 2025,
-        featured: true,
-      },
+     {
+  title: "Cardia AI",
+  slug: "cardia-ai",
+  description: "Modern analytics dashboard built with TypeScript, Neon PostgreSQL, and Prisma.",
+  imageUrl: "https://github.com/shrprofile12-pixel/AgentHospital/blob/main/screencapture-faunnaagentia-vercel-app-2026-11-19-14_37_27.png?raw=true",
+  githubUrl: "https://faunnaagentia.vercel.app/",
+  year: 2025,
+  featured: true,
+},
     ],
   });
 

@@ -8,7 +8,11 @@ import { HeroContent } from "./HeroContent";
 import { HeroImage } from "./HeroImage";
 import { SocialSidebar } from "./SocialSidebar";
 
-const Hero = () => {
+interface HeroProps {
+  onOpenContact?: () => void;
+}
+
+const Hero = ({ onOpenContact }: HeroProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const subTextRef = useRef<HTMLParagraphElement | null>(null);
@@ -80,6 +84,18 @@ const Hero = () => {
     };
   }, []);
 
+  const handleOpenContact = () => {
+    if (onOpenContact) {
+      onOpenContact();
+      return;
+    }
+
+    const contactEl = document.getElementById("contact");
+    if (contactEl) {
+      contactEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -106,7 +122,7 @@ const Hero = () => {
         <HeroImage imageRef={imageRef} />
       </motion.div>
 
-      <SocialSidebar />
+      <SocialSidebar onOpenContact={handleOpenContact} />
     </section>
   );
 };

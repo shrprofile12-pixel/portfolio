@@ -31,7 +31,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
-    <div className="relative z-10 flex min-h-[calc(100vh-80px)] w-full flex-col justify-center py-12 text-left">
+    <div className="relative z-10 flex min-h-[calc(100vh-80px)] w-full flex-col justify-center py-10 text-left">
       
       <h1
         ref={headingRef}

@@ -16,19 +16,16 @@ interface CardPopUpProps {
 const CardPopUp: React.FC<CardPopUpProps> = ({ children }) => {
   return (
     <Dialog>
-      <DialogTrigger>
-        {children || (
-          <button
-            type="button"
-            className="group inline-flex cursor-pointer items-center gap-3 border-b border-blue-400 bg-transparent pb-2 text-sm font-medium text-white transition hover:text-blue-400"
-          >
-            FULL ABOUT ME
-            <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </button>
-        )}
-      </DialogTrigger>
+      {children ? (
+        <DialogTrigger render={children as React.ReactElement} />
+      ) : (
+        <DialogTrigger className="group inline-flex cursor-pointer items-center gap-3 border-b border-blue-400 bg-transparent pb-2 text-sm font-medium text-white transition hover:text-blue-400">
+          FULL ABOUT ME
+          <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </DialogTrigger>
+      )}
 
       <DialogContent className="border-zinc-800 bg-zinc-950 text-white sm:max-w-xl">
         <DialogHeader>
